@@ -1,179 +1,312 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Armando Hernández Rosales | Sistema GERO</title>
-    <style>
-        :root {
-            --azul-profundo: #050a1a;
-            --azul-panel: #0a192f;
-            --dorado-brillante: #f1d279;
-            --dorado-mate: #d4af37;
-            --texto-luz: #ccd6f6;
-        }
+import React, { useState } from 'react';
+import Navbar from './components/Navbar';
+import AbrilSection from './components/AbrilSection';
+// Importá acá tus otros bloques (asegurate que los nombres coincidan)
+// import HeroSection from './components/HeroSection'; 
+// import ProyectosSection from './components/ProyectosSection';
 
-        body {
-            background-color: var(--azul-profundo);
-            color: var(--texto-luz);
-            font-family: 'Lexend', sans-serif;
-            margin: 0;
-            overflow-x: hidden;
-        }
+function App() {
+  const [isAdmin, setIsAdmin] = useState(false);
 
-        /* FONDO DE RED NEURONAL SUTIL */
-        header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: radial-gradient(circle at center, #112240 0%, var(--azul-profundo) 70%);
-            border-bottom: 3px solid var(--dorado-mate);
-        }
+  return (
+    <div className="bg-[#0a0a0a] min-h-screen text-white selection:bg-amber-500/30">
+      <Navbar isAdmin={isAdmin} setIsAdmin={setIsAdmin} />
+      
+      <main>
+        {/* BLOQUE 1: Tu Hero con el cerebro (Fondo Oscuro) */}
+        <section id="inicio" className="min-h-screen">
+          {/* Si tenés el componente Hero separado, ponelo acá: <HeroSection /> */}
+          <div className="flex items-center justify-center h-screen">
+            <h1 className="text-6xl font-serif">Diseño Biológico & Voluntad</h1>
+          </div>
+        </section>
 
-        h1 { 
-            font-size: 3.5rem; 
-            color: var(--dorado-brillante); 
-            margin: 0;
-            letter-spacing: 2px;
-            text-shadow: 0 0 20px rgba(241, 210, 121, 0.3);
-        }
+        {/* BLOQUE 2: Bitácora Abril (Pasa a Fondo Sepia/Oscuro según diseño) */}
+        <AbrilSection isAdmin={isAdmin} />
 
-        .subtitulo {
-            font-size: 1.5rem;
-            color: var(--texto-luz);
-            margin-top: 10px;
-            font-weight: 300;
-        }
+        {/* BLOQUE 3: Proyectos, Prestaciones, etc. */}
+        {/* <section id="proyectos"><ProyectosSection /></section> */}
+      </main>
 
-        /* ESTRUCTURA DE PANELES (SISTEMA GERO) */
-        .contenedor-paneles {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 40px;
-            max-width: 1400px;
-            margin: auto;
-        }
-
-        .panel {
-            flex: 1;
-            min-width: 350px;
-            background: var(--azul-panel);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 30px;
-            border-radius: 4px;
-            position: relative;
-            transition: all 0.4s ease;
-        }
-
-        .panel:hover {
-            border-color: var(--dorado-brillante);
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .panel h2 {
-            color: var(--dorado-mate);
-            font-size: 1.8rem;
-            border-bottom: 1px solid var(--dorado-mate);
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-        }
-
-        .metodologia-item {
-            margin-bottom: 15px;
-            padding-left: 15px;
-            border-left: 2px solid var(--dorado-mate);
-        }
-
-        .footer-creditos {
-            text-align: center;
-            padding: 60px;
-            background: var(--azul-profundo);
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        .btn-interactivo {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            border: 1px solid var(--dorado-mate);
-            color: var(--dorado-mate);
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-        }
-    </style>
-</head>
-<body>
-
-<header>
-    <div class="logo-central">
-        <h1>Dr. A.H.R.</h1>
-        <div class="subtitulo">Neurofisiología Clínica & Estrategia Cognitiva</div>
-        <p style="max-width: 600px; margin: 30px auto; font-style: italic; opacity: 0.8;">
-            "La transición de un sistema reactivo a una arquitectura de respuesta consciente."
-        </p>
+      <footer className="py-10 border-t border-white/5 text-center text-zinc-600 text-xs">
+        © 2026 Dr. Armando Hernández Rosales · Habitar la Neurociencia
+      </footer>
     </div>
-</header>
+  );
+}
 
-<div class="contenedor-paneles">
-    
-    <div class="panel">
-        <h2>Metodología GERO</h2>
-        <div class="metodologia-item">
-            <strong>Bitácora de Navegación:</strong>
-            <p>Physical Prototype de registro metacognitivo para el seguimiento conductual.</p>
+export default App;import React, { useState } from 'react';
+import { Star, LogOut, ShieldCheck, Menu, X } from 'lucide-react';
+import { ModalPassAdmin } from './AbrilSection'; 
+
+export default function Navbar({ isAdmin, setIsAdmin }) {
+  const [showPassModal, setShowPassModal] = useState(false);
+
+  return (
+    <nav className="fixed top-0 w-full z-[100] bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/5 px-6 py-4">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        
+        {/* Logo que scrollea al inicio, NO te saca de la web */}
+        <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
+          <div className="w-8 h-8 rounded-lg bg-amber-500 flex items-center justify-center text-zinc-950 font-bold">A</div>
+          <span className="text-white font-serif text-xl tracking-tight hidden sm:block">Dr.A.H.R.</span>
         </div>
-        <div class="metodologia-item">
-            <strong>Interacción Conductista:</strong>
-            <p>Análisis de paradigma en la consulta neurológica actual.</p>
-        </div>
-        <a href="#" class="btn-interactivo">Explorar Bitácora</a>
-    </div>
 
-    <div class="panel">
-        <h2>Producciones Desafíos</h2>
-        <p>Ecosistema neuroeducativo y sociocultural para la democratización del conocimiento.</p>
-        <ul style="list-style: none; padding: 0;">
-            <li style="margin-bottom: 10px;">• Dirección: Niurka María Pérez Pérez</li>
-            <li style="margin-bottom: 10px;">• Proyecto: "Tenés un cerebro, úsalo"</li>
-            <li style="margin-bottom: 10px;">• Formatos: Media & Documentación Científica</li>
-        </ul>
-        <a href="#" class="btn-interactivo">Ver Producciones</a>
-    </div>
-
-    <div class="panel">
-        <h2>Academia NeuroMente</h2>
-        <p>Desarrollo de Funciones Ejecutivas a través de instrumentos de alta complejidad cognitiva.</p>
-        <div style="display: flex; gap: 20px; margin-top: 20px;">
-            <div style="text-align: center; flex: 1;">
-                <span style="font-size: 2rem;">♟</span><br>Ajedrez
+        <div className="flex items-center gap-6">
+          <a href="#inicio" className="text-zinc-400 hover:text-white text-sm transition">Inicio</a>
+          <a href="#abril" className="text-zinc-400 hover:text-white text-sm transition font-medium text-amber-400/80">Bitácora</a>
+          
+          {!isAdmin ? (
+            <button 
+              onClick={() => setShowPassModal(true)}
+              className="group flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900 border border-white/5 hover:border-amber-500/50 transition-all"
+            >
+              <Star size={14} className="text-zinc-600 group-hover:text-amber-500" />
+              <span className="text-[0.65rem] uppercase tracking-[0.2em] text-zinc-500 group-hover:text-zinc-200">Acceso Admin</span>
+            </button>
+          ) : (
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20">
+                <ShieldCheck size={14} className="text-amber-500" />
+                <span className="text-[0.6rem] uppercase tracking-widest text-amber-500 font-bold">Modo Editor</span>
+              </div>
+              <button onClick={() => setIsAdmin(false)} className="text-zinc-500 hover:text-red-400 transition-colors">
+                <LogOut size={16} />
+              </button>
             </div>
-            <div style="text-align: center; flex: 1;">
-                <span style="font-size: 2rem;">🃏</span><br>Póker
-            </div>
+          )}
         </div>
-        <p style="margin-top: 20px; font-size: 0.9rem;">Entrenamiento prefrontal y toma de decisiones bajo incertidumbre.</p>
-        <a href="#" class="btn-interactivo">Ingreso Academia</a>
+      </div>
+
+      {showPassModal && (
+        <ModalPassAdmin onClose={() => setShowPassModal(false)} onSuccess={() => { setIsAdmin(true); setShowPassModal(false); }} />
+      )}
+    </nav>
+  );
+}import React, { useState, useEffect } from 'react';
+import { 
+  ChevronLeft, ChevronRight, Dna, CalendarDays, PenLine, Star, X, 
+  Moon, Sun, ShieldCheck, Upload, ExternalLink 
+} from 'lucide-react';
+import { abrilPages } from './abrilContent';
+import { doc, onSnapshot, setDoc } from 'firebase/firestore';
+import { db } from '../firebase';
+
+const ADMIN_PASS = 'drahr2026';
+const STORAGE_KEY = 'cd_abril_2026';
+
+// CONFIGURACIÓN DE COLORES
+const TIPO_CONFIG = {
+  nacimiento: { ring: 'ring-emerald-500/60', text: 'text-emerald-300', badge: 'bg-emerald-900/30 text-emerald-300 border-emerald-700/40' },
+  charla: { ring: 'ring-emerald-500/60', text: 'text-emerald-300', badge: 'bg-emerald-900/30 text-emerald-300 border-emerald-700/40' },
+  investigacion: { ring: 'ring-amber-500/60', text: 'text-amber-300', badge: 'bg-amber-900/30 text-amber-300 border-amber-700/40' }
+};
+
+// COMPONENTE PRINCIPAL
+export default function AbrilSection({ isAdmin }) {
+  const [page, setPage] = useState(2); // Inicia en el Calendario
+  const actual = abrilPages[page];
+
+  return (
+    <section id="abril" className="max-w-6xl mx-auto px-6 py-12 scroll-mt-24">
+      <div className="flex items-center gap-4 mb-8">
+        <Dna className="text-amber-500" size={32} />
+        <h2 className="text-4xl font-serif">Bitácora Abril</h2>
+      </div>
+
+      <div className="bg-zinc-900/80 border border-white/10 rounded-[2.5rem] overflow-hidden shadow-2xl">
+        {actual.type === 'calendar' ? (
+          <CalendarioLayout page={actual} isAdmin={isAdmin} />
+        ) : (
+          <StandardLayout page={actual} isAdmin={isAdmin} />
+        )}
+
+        <div className="p-6 border-t border-white/5 flex justify-center gap-4 bg-black/20">
+          <button onClick={() => setPage(p => Math.max(0, p-1))} className="text-zinc-500 hover:text-white transition"><ChevronLeft /></button>
+          <div className="flex gap-2">
+            {abrilPages.map((_, i) => <div key={i} className={`w-1.5 h-1.5 rounded-full ${i === page ? 'bg-amber-500' : 'bg-zinc-700'}`} />)}
+          </div>
+          <button onClick={() => setPage(p => Math.min(abrilPages.length-1, p+1))} className="text-zinc-500 hover:text-white transition"><ChevronRight /></button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// LAYOUT: CALENDARIO (Con Video Día 1)
+// ─────────────────────────────────────────────────────────────────────────────
+
+function CalendarioLayout({ page, isAdmin }) {
+  const { startDayIndex = 0, totalDays = 30, eventos = {} } = page;
+  
+  const eventosHito = {
+    ...eventos,
+    1: {
+      tipo: 'nacimiento',
+      emoji: '🎙️',
+      titulo: 'El Origen: La Palabra de la Maestra',
+      acceso: 'abierto',
+      video: '/marzo/video-maestra.mp4', 
+      contenido: 'A la Dra. Lidilia le debo gran parte de la base ética y profesional que me sostiene hoy. El "Punto Cero" de estos 30 años de trayectoria empieza con su voz. Gracias, Maestra.'
+    }
+  };
+
+  const [modalEvento, setModalEvento] = useState(null);
+  const [panelAdmin, setPanelAdmin] = useState(false);
+  const [diaEditar, setDiaEditar] = useState(null);
+
+  const slots = Array(35).fill(null);
+  for (let i = 0; i < totalDays; i++) slots[startDayIndex + i] = i + 1;
+  if (startDayIndex > 0) slots[startDayIndex - 1] = 31;
+
+  return (
+    <div className="p-8">
+      <div className="grid grid-cols-7 gap-2">
+        {slots.map((day, i) => {
+          if (!day) return <div key={i} />;
+          const ev = eventosHito[day];
+          const cfg = ev ? TIPO_CONFIG[ev.tipo] : null;
+          return (
+            <button key={i} onClick={() => ev && setModalEvento({ day, evento: ev })} className={`h-14 rounded-xl border transition-all flex flex-col items-center justify-center ${ev ? `bg-zinc-900 ${cfg.ring}` : 'bg-zinc-900/40 border-white/5 text-zinc-600'}`}>
+              <span className={`text-sm font-bold ${ev ? cfg.text : ''}`}>{day}</span>
+              {ev && <span className="text-[0.6rem]">{ev.emoji}</span>}
+            </button>
+          );
+        })}
+      </div>
+
+      {modalEvento && (
+        <ModalEvento 
+          day={modalEvento.day} 
+          evento={modalEvento.evento} 
+          isAdmin={isAdmin}
+          onEdit={(d) => { setDiaEditar(d); setModalEvento(null); setPanelAdmin(true); }}
+          onClose={() => setModalEvento(null)} 
+        />
+      )}
+
+      {panelAdmin && (
+        <PanelAdmin 
+          totalDays={totalDays} 
+          initialDay={diaEditar}
+          onClose={() => { setPanelAdmin(false); setDiaEditar(null); }} 
+        />
+      )}
     </div>
+  );
+}
 
-</div>
+// ─────────────────────────────────────────────────────────────────────────────
+// LAYOUT: STANDARD (Reflexiones Firebase)
+// ─────────────────────────────────────────────────────────────────────────────
 
-<section style="padding: 60px 20px; text-align: center; background: var(--azul-panel);">
-    <h2 style="color: var(--dorado-mate);">Alianza Profesional</h2>
-    <p>Dirección Clínica: <strong>Dra. Lidilia Abreu</strong></p>
-    <p style="font-size: 0.9rem; opacity: 0.7;">MP: 3335 | MN: 106.357 | Esp N I. 22/0268</p>
-</section>
+function StandardLayout({ page, isAdmin }) {
+  const [nota, setNota] = useState('');
+  const [isSaving, setIsSaving] = useState(false);
 
-<footer class="footer-creditos">
-    <p>&copy; 2026 dr.A.H.R. | Santa Fe, Argentina | drhernandezrosales.com</p>
-</footer>
+  useEffect(() => {
+    if (!page.id) return;
+    const docRef = doc(db, 'reflexiones_doctor', page.id);
+    const unsubscribe = onSnapshot(docRef, (docSnap) => {
+      if (docSnap.exists()) setNota(docSnap.data().texto || '');
+    });
+    return () => unsubscribe();
+  }, [page.id]);
 
-</body>
-</html>
+  const guardar = async () => {
+    setIsSaving(true);
+    await setDoc(doc(db, 'reflexiones_doctor', page.id), { texto: nota }, { merge: true });
+    setIsSaving(false);
+  };
+
+  return (
+    <div className="grid lg:grid-cols-2 gap-0">
+      <div className="p-6 bg-black/20 flex items-center">
+        <img src={page.image} className="w-full rounded-2xl shadow-2xl border border-white/5" alt={page.titulo} />
+      </div>
+      <div className="p-10 flex flex-col">
+        <h3 className="text-3xl font-serif text-white mb-4">{page.titulo}</h3>
+        <p className="text-zinc-400 italic mb-8 border-l-2 border-amber-500/30 pl-4">{page.descripcion}</p>
+        
+        <div className="flex-1 flex flex-col">
+          <div className="flex justify-between items-center mb-2">
+            <span className="text-[0.6rem] uppercase tracking-widest text-zinc-500 font-bold">Mis Reflexiones</span>
+            {isAdmin && (
+              <button onClick={guardar} className="text-[0.6rem] bg-amber-500 text-black px-3 py-1 rounded-lg font-bold uppercase">
+                {isSaving ? 'Guardando...' : 'Publicar'}
+              </button>
+            )}
+          </div>
+          <textarea 
+            value={nota} 
+            onChange={e => isAdmin && setNota(e.target.value)}
+            readOnly={!isAdmin}
+            className={`flex-1 w-full min-h-[200px] bg-zinc-950 border p-5 rounded-2xl text-zinc-300 ${isAdmin ? 'border-amber-500/30 focus:border-amber-500' : 'border-white/5'}`}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// COMPONENTES AUXILIARES
+// ─────────────────────────────────────────────────────────────────────────────
+
+function ModalEvento({ day, evento, isAdmin, onEdit, onClose }) {
+  return (
+    <div className="fixed inset-0 z-[150] flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose} />
+      <div className="relative bg-zinc-900 border border-white/10 rounded-[2rem] p-8 max-w-md w-full shadow-2xl">
+        <button onClick={onClose} className="absolute top-4 right-4 text-zinc-500 hover:text-white"><X size={20} /></button>
+        
+        <div className="flex items-center gap-4 mb-6">
+          <div className="text-3xl">{evento.emoji}</div>
+          <h4 className="text-xl font-serif text-white">{evento.titulo}</h4>
+        </div>
+
+        {evento.video && (
+          <div className="mb-6 rounded-xl overflow-hidden bg-black aspect-video border border-white/10">
+            <video controls className="w-full h-full"><source src={evento.video} type="video/mp4" /></video>
+          </div>
+        )}
+
+        <div className="bg-black/40 p-5 rounded-2xl border border-white/5 relative">
+          {isAdmin && (
+            <button onClick={() => onEdit(day)} className="absolute top-4 right-4 text-amber-500"><PenLine size={16} /></button>
+          )}
+          <p className="text-zinc-300 text-sm leading-relaxed whitespace-pre-line">{evento.contenido}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function ModalPassAdmin({ onSuccess, onClose }) {
+  const [pass, setPass] = useState('');
+  const verificar = () => { if (pass === ADMIN_PASS) onSuccess(); else alert('Clave incorrecta'); };
+  return (
+    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/90">
+      <div className="bg-zinc-900 border border-amber-500/20 p-8 rounded-[2rem] w-full max-w-xs text-center">
+        <Star className="text-amber-500 mx-auto mb-4" />
+        <h4 className="text-white font-serif mb-6">Acceso de Administrador</h4>
+        <input type="password" value={pass} onChange={e => setPass(e.target.value)} onKeyDown={e => e.key === 'Enter' && verificar()} className="w-full bg-black border border-zinc-700 rounded-xl px-4 py-3 text-white mb-4 outline-none focus:border-amber-500" autoFocus />
+        <button onClick={verificar} className="w-full py-3 bg-amber-500 text-black font-bold rounded-xl">Entrar</button>
+        <button onClick={onClose} className="text-zinc-600 text-xs mt-4 hover:text-zinc-400">Cancelar</button>
+      </div>
+    </div>
+  );
+}
+
+function PanelAdmin({ totalDays, onClose, initialDay }) {
+  return (
+    <div className="fixed inset-0 z-[150] flex items-center justify-center p-4 bg-black/80">
+      <div className="bg-zinc-950 border border-amber-500/20 p-8 rounded-[2rem] w-full max-w-md">
+        <h3 className="text-white font-serif mb-4">Editando Día {initialDay}</h3>
+        <p className="text-zinc-500 text-sm mb-6 italic">Aquí podrías conectar con Firebase para cambiar los datos fijos del calendario si lo necesitás en el futuro.</p>
+        <button onClick={onClose} className="w-full py-3 bg-zinc-800 text-white rounded-xl">Cerrar</button>
+      </div>
+    </div>
+  );
+}
