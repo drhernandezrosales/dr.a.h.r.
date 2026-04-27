@@ -3,111 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Armando Hernández Rosales | Neurología Infantil</title>
+    <title>Dr. Armando Hernández Rosales | Sistema GERO</title>
     <style>
         :root {
-            --azul-noche: #0a192f;
-            --dorado: #d4af37;
-            --blanco-suave: #e6f1ff;
+            --azul-profundo: #050a1a;
+            --azul-panel: #0a192f;
+            --dorado-brillante: #f1d279;
+            --dorado-mate: #d4af37;
+            --texto-luz: #ccd6f6;
         }
+
         body {
-            background-color: var(--azul-noche);
-            color: var(--blanco-suave);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--azul-profundo);
+            color: var(--texto-luz);
+            font-family: 'Lexend', sans-serif;
             margin: 0;
-            line-height: 1.6;
+            overflow-x: hidden;
         }
+
+        /* FONDO DE RED NEURONAL SUTIL */
         header {
-            padding: 40px 20px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)), url('https://via.placeholder.com/1200x400'); /* Aquí irá tu red neuronal */
-            background-size: cover;
-            border-bottom: 2px solid var(--dorado);
+            background: radial-gradient(circle at center, #112240 0%, var(--azul-profundo) 70%);
+            border-bottom: 3px solid var(--dorado-mate);
         }
-        .identidad {
+
+        h1 { 
+            font-size: 3.5rem; 
+            color: var(--dorado-brillante); 
+            margin: 0;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(241, 210, 121, 0.3);
+        }
+
+        .subtitulo {
+            font-size: 1.5rem;
+            color: var(--texto-luz);
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        /* ESTRUCTURA DE PANELES (SISTEMA GERO) */
+        .contenedor-paneles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 40px;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .panel {
+            flex: 1;
+            min-width: 350px;
+            background: var(--azul-panel);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 30px;
+            border-radius: 4px;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .panel:hover {
+            border-color: var(--dorado-brillante);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .panel h2 {
+            color: var(--dorado-mate);
+            font-size: 1.8rem;
+            border-bottom: 1px solid var(--dorado-mate);
+            padding-bottom: 15px;
             margin-bottom: 20px;
         }
-        h1 { color: var(--dorado); font-size: 2.5rem; margin-bottom: 5px; }
-        .especialidad { font-style: italic; color: var(--blanco-suave); font-size: 1.2rem; }
-        .matriculas { font-size: 0.9rem; opacity: 0.8; margin-top: 10px; }
-        .btn-accion {
-            display: inline-block;
-            padding: 12px 24px;
-            margin: 10px;
-            background-color: transparent;
-            border: 1px solid var(--dorado);
-            color: var(--dorado);
-            text-decoration: none;
-            transition: all 0.3s;
-            border-radius: 5px;
+
+        .metodologia-item {
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 2px solid var(--dorado-mate);
         }
-        .btn-accion:hover {
-            background-color: var(--dorado);
-            color: var(--azul-noche);
+
+        .footer-creditos {
+            text-align: center;
+            padding: 60px;
+            background: var(--azul-profundo);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .btn-interactivo {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: 1px solid var(--dorado-mate);
+            color: var(--dorado-mate);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="identidad">
-        <h1>Dr. Armando Hernández Rosales</h1>
-        <div class="especialidad">Especialista en Neurología Infantil y Neurofisiología Clínica</div>
-        <div class="matriculas">MP: 3335 | MN: 106.357 | Esp N I. 22/0268</div>
+    <div class="logo-central">
+        <h1>Dr. A.H.R.</h1>
+        <div class="subtitulo">Neurofisiología Clínica & Estrategia Cognitiva</div>
+        <p style="max-width: 600px; margin: 30px auto; font-style: italic; opacity: 0.8;">
+            "La transición de un sistema reactivo a una arquitectura de respuesta consciente."
+        </p>
     </div>
-    <p>"De la reactividad a la respuesta consciente: Un cambio de paradigma en la neurociencia aplicada."</p>
-    <a href="#metodo" class="btn-accion">Metodología Dr.A.H.R.</a>
-    <a href="#proyectos" class="btn-accion">Proyectos y Academia</a>
 </header>
 
-</body>
-</html><main style="padding: 20px; max-width: 1200px; margin: auto;">
+<div class="contenedor-paneles">
     
-    <section id="metodo" style="background-color: rgba(212, 175, 55, 0.1); padding: 40px; border-radius: 15px; margin-top: 20px;">
-        <h2 style="color: var(--dorado); text-align: center;">Metodología Dr. A.H.R.</h2>
-        <p style="text-align: center;">Un ecosistema diseñado para transformar la atención neurológica en un proceso de aprendizaje activo.</p>
-        
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-around; margin-top: 30px;">
-            <div style="flex: 1; min-width: 300px; padding: 20px; border: 1px solid var(--dorado); border-radius: 10px; margin: 10px;">
-                <h3>Bitácora de Navegación Conductual</h3>
-                <p>Tu herramienta para el registro y la evolución cognitiva.</p>
-                <a href="#" style="color: var(--dorado);">Descargar 1er Semestre</a><br>
-                <a href="#" style="color: var(--dorado);">Descargar 2do Semestre</a>
+    <div class="panel">
+        <h2>Metodología GERO</h2>
+        <div class="metodologia-item">
+            <strong>Bitácora de Navegación:</strong>
+            <p>Physical Prototype de registro metacognitivo para el seguimiento conductual.</p>
+        </div>
+        <div class="metodologia-item">
+            <strong>Interacción Conductista:</strong>
+            <p>Análisis de paradigma en la consulta neurológica actual.</p>
+        </div>
+        <a href="#" class="btn-interactivo">Explorar Bitácora</a>
+    </div>
+
+    <div class="panel">
+        <h2>Producciones Desafíos</h2>
+        <p>Ecosistema neuroeducativo y sociocultural para la democratización del conocimiento.</p>
+        <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;">• Dirección: Niurka María Pérez Pérez</li>
+            <li style="margin-bottom: 10px;">• Proyecto: "Tenés un cerebro, úsalo"</li>
+            <li style="margin-bottom: 10px;">• Formatos: Media & Documentación Científica</li>
+        </ul>
+        <a href="#" class="btn-interactivo">Ver Producciones</a>
+    </div>
+
+    <div class="panel">
+        <h2>Academia NeuroMente</h2>
+        <p>Desarrollo de Funciones Ejecutivas a través de instrumentos de alta complejidad cognitiva.</p>
+        <div style="display: flex; gap: 20px; margin-top: 20px;">
+            <div style="text-align: center; flex: 1;">
+                <span style="font-size: 2rem;">♟</span><br>Ajedrez
+            </div>
+            <div style="text-align: center; flex: 1;">
+                <span style="font-size: 2rem;">🃏</span><br>Póker
             </div>
         </div>
-    </section>
+        <p style="margin-top: 20px; font-size: 0.9rem;">Entrenamiento prefrontal y toma de decisiones bajo incertidumbre.</p>
+        <a href="#" class="btn-interactivo">Ingreso Academia</a>
+    </div>
 
-    <section id="proyectos" style="margin-top: 50px;">
-        <h2 style="text-align: center; border-bottom: 1px solid var(--dorado); padding-bottom: 10px;">Ecosistema de Proyectos</h2>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px;">
-            
-            <div style="background: #112240; padding: 20px; border-radius: 10px;">
-                <h3 style="color: var(--dorado);">Producciones Desafíos</h3>
-                <p>Contenido socio-cultural y neuroeducativo liderado por <strong>Niurka María Pérez</strong>.</p>
-            </div>
+</div>
 
-            <div style="background: #112240; padding: 20px; border-radius: 10px;">
-                <h3 style="color: var(--dorado);">Academia NeuroMente</h3>
-                <p>Entrenamiento cognitivo de alto rendimiento: Ajedrez, Póker y Neurociencia aplicada.</p>
-            </div>
+<section style="padding: 60px 20px; text-align: center; background: var(--azul-panel);">
+    <h2 style="color: var(--dorado-mate);">Alianza Profesional</h2>
+    <p>Dirección Clínica: <strong>Dra. Lidilia Abreu</strong></p>
+    <p style="font-size: 0.9rem; opacity: 0.7;">MP: 3335 | MN: 106.357 | Esp N I. 22/0268</p>
+</section>
 
-            <div style="background: #112240; padding: 20px; border-radius: 10px;">
-                <h3 style="color: var(--dorado);">Proyecto Social Educativo</h3>
-                <p>Democratizando el conocimiento: "Tenés un cerebro, úsalo".</p>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="servicios" style="margin-top: 50px; text-align: center;">
-        <h2 style="color: var(--dorado);">Prestaciones y Servicios</h2>
-        <p>Consulta Clínica | Segunda Opinión | Asesoramiento Médico-Legal</p>
-        <p style="font-style: italic;">En colaboración con la <strong>Dra. Lidilia Abreu</strong>.</p>
-    </section>
-
-</main>
-
-<footer style="text-align: center; padding: 40px; font-size: 0.8rem; opacity: 0.6;">
-    <p>&copy; 2026 Dr. Armando Hernández Rosales - Todos los derechos reservados.</p>
+<footer class="footer-creditos">
+    <p>&copy; 2026 dr.A.H.R. | Santa Fe, Argentina | drhernandezrosales.com</p>
 </footer>
+
+</body>
+</html>
