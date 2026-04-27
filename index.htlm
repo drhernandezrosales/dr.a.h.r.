@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Armando Hernández Rosales</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; padding: 50px; background-color: #f8f9fa; color: #333; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 40px; border-radius: 10px; shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { color: #004a99; }
+        p { font-size: 1.2em; line-height: 1.6; }
+        .footer { margin-top: 30px; font-size: 0.9em; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dr. Armando Hernández Rosales</h1>
+        <p>Especialista en Neurología Infantil</p>
+        <hr>
+        <p>Próximamente estará disponible aquí la <strong>Bitácora de Navegación Conductual</strong> y contenido sobre neurociencia aplicada.</p>
+        <div class="footer">Sitio Personal en construcción</div>
+    </div>
+</body>
+</html>
