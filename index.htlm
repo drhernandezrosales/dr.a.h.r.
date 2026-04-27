@@ -3,22 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Armando Hernández Rosales</title>
+    <title>Dr. Armando Hernández Rosales | Neurología Infantil</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; padding: 50px; background-color: #f8f9fa; color: #333; }
-        .container { max-width: 600px; margin: auto; background: white; padding: 40px; border-radius: 10px; shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        h1 { color: #004a99; }
-        p { font-size: 1.2em; line-height: 1.6; }
-        .footer { margin-top: 30px; font-size: 0.9em; color: #666; }
+        :root {
+            --azul-noche: #0a192f;
+            --dorado: #d4af37;
+            --blanco-suave: #e6f1ff;
+        }
+        body {
+            background-color: var(--azul-noche);
+            color: var(--blanco-suave);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+        header {
+            padding: 40px 20px;
+            text-align: center;
+            background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)), url('https://via.placeholder.com/1200x400'); /* Aquí irá tu red neuronal */
+            background-size: cover;
+            border-bottom: 2px solid var(--dorado);
+        }
+        .identidad {
+            margin-bottom: 20px;
+        }
+        h1 { color: var(--dorado); font-size: 2.5rem; margin-bottom: 5px; }
+        .especialidad { font-style: italic; color: var(--blanco-suave); font-size: 1.2rem; }
+        .matriculas { font-size: 0.9rem; opacity: 0.8; margin-top: 10px; }
+        .btn-accion {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 10px;
+            background-color: transparent;
+            border: 1px solid var(--dorado);
+            color: var(--dorado);
+            text-decoration: none;
+            transition: all 0.3s;
+            border-radius: 5px;
+        }
+        .btn-accion:hover {
+            background-color: var(--dorado);
+            color: var(--azul-noche);
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+
+<header>
+    <div class="identidad">
         <h1>Dr. Armando Hernández Rosales</h1>
-        <p>Especialista en Neurología Infantil</p>
-        <hr>
-        <p>Próximamente estará disponible aquí la <strong>Bitácora de Navegación Conductual</strong> y contenido sobre neurociencia aplicada.</p>
-        <div class="footer">Sitio Personal en construcción</div>
+        <div class="especialidad">Especialista en Neurología Infantil y Neurofisiología Clínica</div>
+        <div class="matriculas">MP: 3335 | MN: 106.357 | Esp N I. 22/0268</div>
     </div>
+    <p>"De la reactividad a la respuesta consciente: Un cambio de paradigma en la neurociencia aplicada."</p>
+    <a href="#metodo" class="btn-accion">Metodología Dr.A.H.R.</a>
+    <a href="#proyectos" class="btn-accion">Proyectos y Academia</a>
+</header>
+
 </body>
-</html>
+</html><main style="padding: 20px; max-width: 1200px; margin: auto;">
+    
+    <section id="metodo" style="background-color: rgba(212, 175, 55, 0.1); padding: 40px; border-radius: 15px; margin-top: 20px;">
+        <h2 style="color: var(--dorado); text-align: center;">Metodología Dr. A.H.R.</h2>
+        <p style="text-align: center;">Un ecosistema diseñado para transformar la atención neurológica en un proceso de aprendizaje activo.</p>
+        
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-around; margin-top: 30px;">
+            <div style="flex: 1; min-width: 300px; padding: 20px; border: 1px solid var(--dorado); border-radius: 10px; margin: 10px;">
+                <h3>Bitácora de Navegación Conductual</h3>
+                <p>Tu herramienta para el registro y la evolución cognitiva.</p>
+                <a href="#" style="color: var(--dorado);">Descargar 1er Semestre</a><br>
+                <a href="#" style="color: var(--dorado);">Descargar 2do Semestre</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="proyectos" style="margin-top: 50px;">
+        <h2 style="text-align: center; border-bottom: 1px solid var(--dorado); padding-bottom: 10px;">Ecosistema de Proyectos</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px;">
+            
+            <div style="background: #112240; padding: 20px; border-radius: 10px;">
+                <h3 style="color: var(--dorado);">Producciones Desafíos</h3>
+                <p>Contenido socio-cultural y neuroeducativo liderado por <strong>Niurka María Pérez</strong>.</p>
+            </div>
+
+            <div style="background: #112240; padding: 20px; border-radius: 10px;">
+                <h3 style="color: var(--dorado);">Academia NeuroMente</h3>
+                <p>Entrenamiento cognitivo de alto rendimiento: Ajedrez, Póker y Neurociencia aplicada.</p>
+            </div>
+
+            <div style="background: #112240; padding: 20px; border-radius: 10px;">
+                <h3 style="color: var(--dorado);">Proyecto Social Educativo</h3>
+                <p>Democratizando el conocimiento: "Tenés un cerebro, úsalo".</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="servicios" style="margin-top: 50px; text-align: center;">
+        <h2 style="color: var(--dorado);">Prestaciones y Servicios</h2>
+        <p>Consulta Clínica | Segunda Opinión | Asesoramiento Médico-Legal</p>
+        <p style="font-style: italic;">En colaboración con la <strong>Dra. Lidilia Abreu</strong>.</p>
+    </section>
+
+</main>
+
+<footer style="text-align: center; padding: 40px; font-size: 0.8rem; opacity: 0.6;">
+    <p>&copy; 2026 Dr. Armando Hernández Rosales - Todos los derechos reservados.</p>
+</footer>
